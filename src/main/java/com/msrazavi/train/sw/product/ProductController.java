@@ -3,7 +3,6 @@ package com.msrazavi.train.sw.product;
 import com.msrazavi.train.sw.base.BaseController;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @author M_SadatRazavi
+ * @author <a href="mailto:mehdisr57@gmail.com">Mehdi.S.Razavi</a>
  * Task 1.4 (RestFull)
  */
 @RestController

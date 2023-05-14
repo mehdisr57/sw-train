@@ -2,13 +2,18 @@ package com.msrazavi.train.sw.base;
 
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
+import org.hibernate.annotations.UuidGenerator;
 
 import java.util.Objects;
 
+/**
+ * @author <a href="mailto:mehdisr57@gmail.com">Mehdi.S.Razavi</a>
+ */
 @MappedSuperclass
 public class BaseEntity {
 
     @Id
+    @UuidGenerator
     private String id;
 
     protected BaseEntity() {

@@ -1,6 +1,7 @@
 package com.msrazavi.train.sw.price;
 
 import com.msrazavi.train.sw.base.BaseEntity;
+import com.msrazavi.train.sw.err.ProductIdNotFoundException;
 import com.msrazavi.train.sw.product.Product;
 import com.msrazavi.train.sw.product.ProductRepository;
 import jakarta.transaction.Transactional;
@@ -41,7 +42,7 @@ public class ProductPriceService {
                 .map(ProductPrice::getProduct)
                 .map(BaseEntity::getId)
                 .flatMap(productRepository::findById)
-                .orElseThrow(() -> new IllegalArgumentException("productId is not valid"));
+                .orElseThrow(ProductIdNotFoundException::new);
 
         this.repository.deActivePricesOfProduct(product.getId());
 
@@ -57,9 +58,7 @@ public class ProductPriceService {
     }
 
     public List<ProductPrice> findByProductId(String productId) {
-        if (productId == null) {
-            throw new IllegalArgumentException("productId is not valid");
-        }
+        ProductIdNotFoundException.checkAndThrowException(productId);
         return this.repository.findByProductId(productId);
     }
 }

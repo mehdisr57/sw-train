@@ -1,5 +1,6 @@
 package com.msrazavi.train.sw.product;
 
+import com.msrazavi.train.sw.err.ProductIdNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -47,8 +48,6 @@ public class ProductService {
     }
 
     private static void validateId(String id) {
-        if (id == null) {
-            throw new IllegalArgumentException("id is not valid");
-        }
+        ProductIdNotFoundException.checkAndThrowException(id);
     }
 }

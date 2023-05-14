@@ -1,5 +1,6 @@
 package com.msrazavi.train.sw.base;
 
+import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 
 import java.util.Objects;
@@ -7,9 +8,10 @@ import java.util.Objects;
 @MappedSuperclass
 public class BaseEntity {
 
+    @Id
     private String id;
 
-    public BaseEntity() {
+    protected BaseEntity() {
     }
 
     public String getId() {

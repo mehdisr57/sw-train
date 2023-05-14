@@ -7,5 +7,5 @@
 5. [ ] Testable
 6. [ ] has Security
 7. [x] Use H2 for db
-8. [ ] Use Logging (logback)
+8. [x] Use Logging (logback)
 9. [ ] Dockerized

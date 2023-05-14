@@ -8,7 +8,7 @@ public class TrainApp {
 
     public static void main(String... args) {
         new SpringApplicationBuilder()
-                .main(TrainApp.class)
+                .sources(TrainApp.class)
                 .run(args);
     }
 }

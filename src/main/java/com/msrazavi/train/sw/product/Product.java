@@ -1,7 +1,9 @@
 package com.msrazavi.train.sw.product;
 
 import com.msrazavi.train.sw.base.BaseEntity;
+import jakarta.persistence.Entity;
 
+@Entity
 public class Product extends BaseEntity {
 
     private String name;

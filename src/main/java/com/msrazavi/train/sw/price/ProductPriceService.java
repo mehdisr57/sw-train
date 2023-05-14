@@ -28,7 +28,7 @@ public class ProductPriceService {
 
     @Transactional
     public ProductPrice setPrice(ProductPrice productPrice) {
-        if (productPrice == null){
+        if (productPrice == null) {
             throw new IllegalArgumentException("productPrice is not valid");
         }
 

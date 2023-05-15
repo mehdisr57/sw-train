@@ -4,7 +4,7 @@
 2. [x] Use Spring Boot 3.X.X `3.0.6` 
 3. [x] Project: Maven
 4. [x] Restfull
-5. [ ] Testable
+5. [x] Testable `unit test without integrated test`
 6. [ ] has Security `basic Security is used instead of oauth`
 7. [x] Use H2 for db
 8. [x] Use Logging (logback)

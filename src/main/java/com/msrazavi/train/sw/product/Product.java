@@ -14,6 +14,13 @@ public class Product extends BaseEntity {
     @Column(name = ProductConstant.NAME)
     private String name;
 
+    public Product() {
+    }
+
+    public Product(String name) {
+        this.name = name;
+    }
+
     public String getName() {
         return name;
     }

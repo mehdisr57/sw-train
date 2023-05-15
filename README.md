@@ -8,7 +8,7 @@
 6. [ ] has Security `basic Security is used instead of oauth`
 7. [x] Use H2 for db
 8. [x] Use Logging (logback)
-9. [x] Dockerized
+9. [x] Dockerized `use spring native in maven`
 
 ## Command
 * mvn -Pnative spring-boot:build-image

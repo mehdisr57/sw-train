@@ -2,12 +2,14 @@ package com.msrazavi.train.sw.price;
 
 import com.msrazavi.train.sw.product.Product;
 import com.msrazavi.train.sw.product.ProductController;
+import com.msrazavi.train.sw.tools.SecurityTestTools;
 import com.msrazavi.train.sw.util.JsonUtil;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
@@ -23,7 +25,7 @@ import java.util.Collections;
  * @author <a href="mailto:mehdisr57@gmail.com">Mehdi.S.Razavi</a>
  */
 @ExtendWith(SpringExtension.class)
-@WebMvcTest(ProductPriceController.class)
+@WebMvcTest(controllers = ProductPriceController.class, excludeAutoConfiguration = {SecurityAutoConfiguration.class})
 class ProductPriceControllerTest {
 
     @MockBean
@@ -36,7 +38,9 @@ class ProductPriceControllerTest {
     void getPricesOfProductTest() throws Exception {
         Mockito.when(service.findByProductId("1")).thenReturn(Collections.emptyList());
 
-        mockMvc.perform(MockMvcRequestBuilders.get(ProductController.URL + "/1/price"))
+        mockMvc.perform(MockMvcRequestBuilders.get(ProductController.URL + "/1/price")
+                        .header("Authorization", SecurityTestTools.AUTH_HEADER)
+                )
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("*", Matchers.empty()));
     }
@@ -53,6 +57,7 @@ class ProductPriceControllerTest {
                         .content(JsonUtil.asJsonString(request))
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON)
+                        .header("Authorization", SecurityTestTools.AUTH_HEADER)
                 )
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON_VALUE))

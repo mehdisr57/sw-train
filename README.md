@@ -8,4 +8,10 @@
 6. [ ] has Security `basic Security is used instead of oauth`
 7. [x] Use H2 for db
 8. [x] Use Logging (logback)
-9. [ ] Dockerized
+9. [x] Dockerized
+
+## Command
+* mvn -Pnative spring-boot:build-image
+
+## Note
+* can't start powershell (no permission)

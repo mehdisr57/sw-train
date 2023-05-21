@@ -2,7 +2,6 @@ package com.msrazavi.train.sw.price;
 
 import com.msrazavi.train.sw.product.Product;
 import com.msrazavi.train.sw.product.ProductController;
-import com.msrazavi.train.sw.tools.SecurityTestTools;
 import com.msrazavi.train.sw.util.JsonUtil;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
@@ -38,9 +37,7 @@ class ProductPriceControllerTest {
     void getPricesOfProductTest() throws Exception {
         Mockito.when(service.findByProductId("1")).thenReturn(Collections.emptyList());
 
-        mockMvc.perform(MockMvcRequestBuilders.get(ProductController.URL + "/1/price")
-                        .header("Authorization", SecurityTestTools.AUTH_HEADER)
-                )
+        mockMvc.perform(MockMvcRequestBuilders.get(ProductController.URL + "/1/price"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("*", Matchers.empty()));
     }
@@ -57,7 +54,6 @@ class ProductPriceControllerTest {
                         .content(JsonUtil.asJsonString(request))
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON)
-                        .header("Authorization", SecurityTestTools.AUTH_HEADER)
                 )
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON_VALUE))
